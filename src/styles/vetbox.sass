@@ -1,0 +1,115 @@
+*[row], *[col], *[wrap]
+  display: flex
+  &[wrap]
+    flex-wrap: wrap
+
+*[flex]
+  flex: auto
+
+@for $i from 1 through 100
+  *[flex="#{$i}"]
+    @if $i == 33
+      max-width: 33.33%
+      flex: 1 1 33.33%
+    @else
+      @if $i == 66
+        max-width: 66.66%
+        flex: 1 1 66.66%
+      @else
+        max-width: $i + %
+        flex: 1 1 $i + %
+
+@for $i from 1 through 100
+  *[child-flex="#{$i}"] > *
+    @if $i == 33
+      max-width: 33.33%
+      flex: 1 1 33.33%
+    @else
+      @if $i == 66
+        max-width: 66.66%
+        flex: 1 1 66.66%
+      @else
+        max-width: $i + %
+        flex: 1 1 $i + %
+
+@for $i from 1 through 20
+  &[cols-flex="#{$i}"] > *
+    max-width: 100 / $i + %
+    flex: 1 1 100 / $i + %
+
+*[row]
+  flex-direction: row
+
+  &[row^=flex-start], &[row^=fs]
+    justify-content: flex-start
+  &[row^=flex-end], &[vbh^=fe]
+    justify-content: flex-end
+  &[row^=center], &[row^=cn]
+    justify-content: center
+  &[row^=space-between], &[row^=sb]
+    justify-content: space-between
+  &[row^=space-around], &[row^=sa]
+    justify-content: space-around
+
+  &[row$=flex-start], &[row$=fs]
+    align-items: flex-start
+  &[row$=flex-end], &[row$=fe]
+    align-items: flex-end
+  &[row$=center], &[row$=cn]
+    align-items: center
+  &[row$=baseline], &[row$=bl]
+    align-items: baseline
+  &[row$=stretch], &[row$=str]
+    align-items: stretch
+
+
+*[col]
+  flex-direction: column
+
+  &[col^=flex-start], &[col^=fs]
+    justify-content: flex-start
+  &[col^=flex-end], &[col^=fe]
+    justify-content: flex-end
+  &[col^=center], &[col^=cn]
+    justify-content: center
+  &[col^=space-between], &[col^=sb]
+    justify-content: space-between
+  &[col^=space-around], &[col^=sa]
+    justify-content: space-around
+
+  &[col$=flex-start], &[col$=fs]
+    align-items: flex-start
+  &[col$=flex-end], &[col$=fe]
+    align-items: flex-end
+  &[col$=center], &[col$=cn]
+    align-items: center
+  &[col$=baseline], &[col$=bl]
+    align-items: baseline
+  &[col$=stretch], &[col$=str]
+    align-items: stretch
+
+*[align-content]
+  &[align-content^=flex-start], &[align-content^=fs]
+    justify-content: flex-start
+  &[align-content^=flex-end], &[vbh^=fe]
+    justify-content: flex-end
+  &[align-content^=center], &[align-content^=cn]
+    justify-content: center
+  &[align-content^=space-between], &[align-content^=sb]
+    justify-content: space-between
+  &[align-content^=space-around], &[align-content^=sa]
+    justify-content: space-around
+  &[align-content^=stretch], &[align-content^=str]
+    justify-content: space-around
+
+*[align-self]
+  &[align-self$=flex-start], &[align-self$=fs]
+    align-self: flex-start
+  &[align-self$=flex-end], &[align-self$=fe]
+    align-self: flex-end
+  &[align-self$=center], &[align-self$=cn]
+    align-self: center
+  &[align-self$=baseline], &[align-self$=bl]
+    align-self: baseline
+  &[align-self$=stretch], &[align-self$=str]
+    align-self: stretch
