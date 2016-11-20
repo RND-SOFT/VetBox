@@ -1,13 +1,22 @@
 @mixin calc-row-flex($val)
   @if $val == 33
-    max-width: 33.33%
-    flex: 1 1 33.33%
+    max-width: 33.3333%
+    flex: 1 1 calc(100% / 3)
   @else
     @if $val == 66
-      max-width: 66.66%
-      flex: 1 1 66.66%
+      max-width: 66.6666%
+      flex: 1 1 calc(200% / 3)
     @else
       max-width: $val + %
+      flex: 1 1 $val + %
+
+@mixin calc-col-flex($val)
+  @if $val == 33
+    flex: 1 1 calc(100% / 3)
+  @else
+    @if $val == 66
+      flex: 1 1 calc(200% / 3)
+    @else
       flex: 1 1 $val + %
 
 @mixin justify-content-set($direction)
@@ -35,13 +44,25 @@
     align-items: stretch
 
 @mixin align-self-set
-  &[align-self$=flex-start], &[align-self$=fs]
+  &[align-self=flex-start], &[align-self=fs]
     align-self: flex-start
-  &[align-self$=flex-end], &[align-self$=fe]
+  &[align-self=flex-end], &[align-self=fe]
     align-self: flex-end
-  &[align-self$=center], &[align-self$=cn]
+  &[align-self=center], &[align-self=cn]
     align-self: center
-  &[align-self$=baseline], &[align-self$=bl]
+  &[align-self=baseline], &[align-self=bl]
     align-self: baseline
-  &[align-self$=stretch], &[align-self$=str]
+  &[align-self=stretch], &[align-self=str]
     align-self: stretch
+
+@mixin align-content-set
+  &[align-content=flex-start], &[align-content=fs]
+    align-content: flex-start
+  &[align-content=flex-end], &[align-content=fe]
+    align-content: flex-end
+  &[align-content=center], &[align-content=cn]
+    align-content: center
+  &[align-content=baseline], &[align-content=bl]
+    align-content: baseline
+  &[align-content=stretch], &[align-content=str]
+    align-content: stretch
