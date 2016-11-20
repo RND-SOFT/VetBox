@@ -1,7 +1,7 @@
 {
-  "name": "Template",
+  "name": "VetBox",
   "version": "1.0.0",
-  "description": "Gulp. Slim, Sass, JS. Needs coffee",
+  "description": "css flexbox framework",
   "author": "VetLee",
   "license": "ISC",
   "dependencies": {},
@@ -9,9 +9,12 @@
     "browser-sync": "^2.14.*",
     "gulp": "^3.9.*",
     "gulp-autoprefixer": "^3.1.*",
+    "gulp-clean-css": "^2.0.*",
+    "gulp-rename": "^1.2.*",
     "gulp-rigger": "^0.5.*",
     "gulp-sass": "^2.3.*",
     "gulp-slim": "^0.3.*",
+    "gulp-sourcemaps": "^2.2.*",
     "gulp-watch": "^4.3.*"
   }
 }

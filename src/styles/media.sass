@@ -1,0 +1,33 @@
+@import "vetbox"
+
+@media only screen and (max-width: 599px)
+  // xs
+  @include core("xs")
+
+@media only screen and (min-width: 600px)
+  // gt-xs
+  @include core("gt-xs")
+
+@media only screen and (min-width: 600px) and (max-width: 959px)
+  // sm
+  @include core("sm")
+
+@media only screen and (min-width: 960px)
+  // gt-sm
+  @include core("gt-sm")
+
+@media only screen and (min-width: 960px) and (max-width: 1279px)
+  // md
+  @include core("md")
+
+@media only screen and (min-width: 1280px)
+  // gt-md
+  @include core("gt-md")
+
+@media only screen and (min-width: 1280px) and (max-width: 1919px)
+  // lg
+  @include core("lg")
+
+@media only screen and (min-width: 1920px)
+  // xl
+  @include core("xl")
