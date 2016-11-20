@@ -4,6 +4,7 @@
   "description": "css flexbox framework",
   "author": "VetLee",
   "license": "ISC",
+  "repository": "",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.14.*",

@@ -13,8 +13,7 @@ sourcemaps = require('gulp-sourcemaps')
 reload = browserSync.reload
 
 path =
-  dist:
-    css: 'dist/'
+  dist: 'dist/'
   build:
     html:   'build/'
     js:     'build/js/'
@@ -22,11 +21,12 @@ path =
     img:    'build/img/'
     fonts:  'build/fonts/'
   src:
+    vetbox:
+      core:  'src/styles/vetbox.sass'
+      media:  'src/styles/media.sass'
     slim:   'src/*.slim'
     js:     'src/js/main.js'
-    style:  'src/styles/main.sass'
-    vetbox:  'src/styles/vetbox.sass'
-    media_vetbox:  'src/styles/media.sass'
+    style:  'src/styles/demo.sass'
     img:    'src/img/**/*.*'
     fonts:  'src/fonts/**/*.*'
   watch:
@@ -70,48 +70,13 @@ gulp.task 'image:build', ->
 gulp.task 'build', [
   'html:build'
   'style:build'
-  'js:build'
-  'image:build'
 ]
-
-gulp.task 'dist', ->
-  gulp.src(path.src.vetbox)
-    .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(prefixer(
-      browsers: ['last 40 versions']
-    ))
-    .pipe(gulp.dest(path.dist.css))
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write('.'))
-    .pipe(rename(
-      suffix: ".min"
-      ))
-    .pipe(gulp.dest(path.dist.css))
-  gulp.src(path.src.media_vetbox)
-    .pipe(rename(
-      basename: "vetbox.media"
-      ))
-    .pipe(sourcemaps.init())
-    .pipe(sass())
-    .pipe(prefixer(
-      browsers: ['last 40 versions']
-    ))
-    .pipe(gulp.dest(path.dist.css))
-    .pipe(cleanCSS())
-    .pipe(sourcemaps.write('.'))
-    .pipe(rename(
-      suffix: ".min"
-      ))
-    .pipe(gulp.dest(path.dist.css))
 
 gulp.task 'watch', ->
   watch [ path.watch.slim ], (event, cb) ->
     gulp.start 'html:build'
   watch [ path.watch.style ], (event, cb) ->
     gulp.start 'style:build'
-  watch [ path.watch.js ], (event, cb) ->
-    gulp.start 'js:build'
 
 gulp.task 'webserver', ->
   browserSync config
@@ -121,3 +86,35 @@ gulp.task 'default', [
   'webserver'
   'watch'
 ]
+
+
+gulp.task 'dist', ->
+  gulp.src(path.src.vetbox.core)
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(prefixer(
+      browsers: ['last 40 versions']
+    ))
+    .pipe(gulp.dest(path.dist))
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('.'))
+    .pipe(rename(
+      suffix: ".min"
+      ))
+    .pipe(gulp.dest(path.dist))
+  gulp.src(path.src.vetbox.media)
+    .pipe(rename(
+      basename: "vetbox.media"
+      ))
+    .pipe(sourcemaps.init())
+    .pipe(sass())
+    .pipe(prefixer(
+      browsers: ['last 40 versions']
+    ))
+    .pipe(gulp.dest(path.dist))
+    .pipe(cleanCSS())
+    .pipe(sourcemaps.write('.'))
+    .pipe(rename(
+      suffix: ".min"
+      ))
+    .pipe(gulp.dest(path.dist))
