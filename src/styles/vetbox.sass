@@ -2,11 +2,13 @@
 
 @mixin core($size)
 
-  *[hide~="#{$size}"]
-    display: none!important
-
   @if $size!=""
+    *[hide~="#{$size}"]
+      display: none!important
     $size: $size + '-'
+  @else
+    *[hide]
+      display: none!important
 
   *[#{$size}row], *[#{$size}col]
     display: flex
@@ -18,7 +20,7 @@
   *[#{$size}flex]
     flex: 1
 
-  *[#{$size}row]
+  *[#{$size}row], [row]
     flex-direction: row
     @include justify-content-set(row)
     @include align-items-set(row)
@@ -33,7 +35,7 @@
         flex: 1 1 calc(100% / #{$i})
 
 
-  *[#{$size}col]
+  *[#{$size}col], [col]
     flex-direction: column
     @include justify-content-set(col)
     @include align-items-set(col)

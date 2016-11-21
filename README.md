@@ -44,3 +44,9 @@ md         | hide="md" / md-cols-flex           | 960px <= width < 1280px
 gt-md      | hide="gt-md" / gt-md-rows-flex     | width >= 1280px
 lg         | hide="lg" / lg-col                 | 1280px <= width < 1920px
 xl         | hide="xl" / xl-flex                | width >= 1920px
+
+## Build:
+
+* `gulp` - start webserver with livereload (without plugins)
+* `gulp build` - only dev build
+* `gulp dist` - for build distributive
