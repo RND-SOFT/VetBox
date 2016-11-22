@@ -13,6 +13,8 @@
 <div hide="md">
 <div hide="xs md lg">
 
+<div visible="md">
+<div visible="xs md lg">
 
 <div order="-1">
 <div flex-shrink="2">
@@ -47,6 +49,6 @@ xl         | hide="xl" / xl-flex                | width >= 1920px
 
 ## Build:
 
-* `gulp` - start webserver with livereload (without plugins)
+* `gulp` - start builder and webserver with livereload (without plugins)
 * `gulp build` - only dev build
-* `gulp dist` - for build distributive
+* `gulp dist` - only distributive build

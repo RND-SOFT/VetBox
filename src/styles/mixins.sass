@@ -66,3 +66,11 @@
     align-content: baseline
   &[align-content=stretch], &[align-content=str]
     align-content: stretch
+
+@mixin hide-set
+  position: absolute
+  visibility: hidden
+
+@mixin unhide-set
+  position: initial
+  visibility: visible

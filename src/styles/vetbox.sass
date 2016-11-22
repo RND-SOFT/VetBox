@@ -2,13 +2,20 @@
 
 @mixin core($size)
 
+
+
   @if $size!=""
     *[hide~="#{$size}"]
-      display: none!important
+      @include hide-set
+    *[visible]:not([visible=""])
+      @include hide-set
+      &[visible~="#{$size}"]
+        @include unhide-set
+    // set prefix for concat with attr
     $size: $size + '-'
   @else
-    *[hide]
-      display: none!important
+    *[hide=""]
+      @include hide-set
 
   *[#{$size}row], *[#{$size}col]
     display: flex
@@ -69,4 +76,4 @@
     &[#{$size}flex-grow="#{$i}"]
       flex-grow: #{$i}
 
-@include core("")       
+@include core("")
