@@ -37,7 +37,7 @@ sa           | space-around
 
 Breakpoint | Exapmles                           | MediaQuery (pixel range)
 ---------- | ---------------------------------- | ------------------------
--          | hide / row="fs cn"                 | *
+           | hide / row="fs cn"                 | all
 xs         | hide="xs" / xs-align-self="center" | width < 600px
 gt-xs      | hide="gt-xs" / gt-xs-row           | width >= 600px
 sm         | hide="sm" / sm-flex                | 600px <= width < 960px
