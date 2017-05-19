@@ -1,4 +1,4 @@
-# VetBox - layout css framework
+# VetBox - layout css library
 
 ## Usage
 
@@ -35,20 +35,20 @@ sa           | space-around
 
 ## Breakpoint aliases:
 
-Breakpoint | Exapmles                           | MediaQuery (pixel range)
----------- | ---------------------------------- | ------------------------
-           | hide / row="fs cn"                 | all
-xs         | hide="xs" / xs-align-self="center" | width < 600px
-gt-xs      | hide="gt-xs" / gt-xs-row           | width >= 600px
-sm         | hide="sm" / sm-flex                | 600px <= width < 960px
-gt-sm      | hide="gt-sm" / gt-sm-wrap          | width >= 960px
-md         | hide="md" / md-cols-flex           | 960px <= width < 1280px
-gt-md      | hide="gt-md" / gt-md-rows-flex     | width >= 1280px
-lg         | hide="lg" / lg-col                 | 1280px <= width < 1920px
-xl         | hide="xl" / xl-flex                | width >= 1920px
+Breakpoint | Exapmles                               | MediaQuery (pixel range)
+---------- | -------------------------------------- | ------------------------
+*without*  | `hide` / `row="fs cn"`                 | **all**
+`xs`       | `hide="xs"` / `xs-align-self="center"` | width < 600px
+`gt-xs`    | `hide="gt-xs"` / `gt-xs-row`           | width >= 600px
+`sm`       | `hide="sm"` / `sm-flex`                | 600px <= width < 960px
+`gt-sm`    | `hide="gt-sm"` / `gt-sm-wrap`          | width >= 960px
+`md`       | `hide="md"` / `md-cols-flex`           | 960px <= width < 1280px
+`gt-md`    | `hide="gt-md"` / `gt-md-rows-flex`     | width >= 1280px
+`lg`       | `hide="lg"` / `lg-col`                 | 1280px <= width < 1920px
+`xl`       | `hide="xl"` / `xl-flex`                | width >= 1920px
 
 ## Build:
 
-* `gulp` - start builder and webserver with livereload (without plugins)
-* `gulp build` - only dev build
-* `gulp dist` - only distributive build
+- `gulp` - start builder and webserver with livereload (without plugins)
+- `gulp build` - only dev build
+- `gulp dist` - only distributive build
