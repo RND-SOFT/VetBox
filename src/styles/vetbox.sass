@@ -2,8 +2,6 @@
 
 @mixin core($size)
 
-
-
   @if $size!=""
     *[hide~="#{$size}"]
       @include hide-set
@@ -36,7 +34,7 @@
       *[#{$size}flex="#{$i}"]
         @include calc-row-flex($i)
 
-    @for $i from 1 through 20
+    @for $i from 1 through 8
       &[#{$size}cols-flex="#{$i}"] > *
         max-width: calc(100% / #{$i}
         flex: 1 1 calc(100% / #{$i})
@@ -47,13 +45,13 @@
     @include justify-content-set(col)
     @include align-items-set(col)
     *[#{$size}flex]
-      flex-basis: auto
+      flex-basis: 1px
       min-height: 0
     @for $i from 1 through 100
       *[#{$size}flex="#{$i}"]
         @include calc-col-flex($i)
 
-    @for $i from 1 through 20
+    @for $i from 1 through 5
       &[#{$size}rows-flex="#{$i}"] > *
         max-height: calc(100% / #{$i}
         flex: 1 1 calc(100% / #{$i})
@@ -68,11 +66,11 @@
     &[#{$size}order="#{$i}"]
       order: #{$i}
 
-  @for $i from 0 through 20
+  @for $i from 0 through 10
     &[#{$size}flex-shrink="#{$i}"]
       flex-shrink: #{$i}
 
-  @for $i from 0 through 20
+  @for $i from 0 through 10
     &[#{$size}flex-grow="#{$i}"]
       flex-grow: #{$i}
 

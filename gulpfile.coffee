@@ -93,7 +93,7 @@ gulp.task 'dist', ->
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(prefixer(
-      browsers: ['last 40 versions']
+      browsers: ['last 10 versions']
     ))
     .pipe(gulp.dest(path.dist))
     .pipe(cleanCSS())
@@ -109,7 +109,7 @@ gulp.task 'dist', ->
     .pipe(sourcemaps.init())
     .pipe(sass())
     .pipe(prefixer(
-      browsers: ['last 40 versions']
+      browsers: ['last 10 versions']
     ))
     .pipe(gulp.dest(path.dist))
     .pipe(cleanCSS())
