@@ -1,3 +1,7 @@
+*[visible] {
+  position: absolute;
+  visibility: hidden; }
+
 *[hide=""] {
   position: absolute;
   visibility: hidden; }
@@ -1634,12 +1638,9 @@
   *[hide~="xs"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="xs"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="xs"] {
+    position: initial;
+    visibility: visible; }
   *[xs-row], *[xs-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -3215,12 +3216,9 @@
   *[hide~="gt-xs"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="gt-xs"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="gt-xs"] {
+    position: initial;
+    visibility: visible; }
   *[gt-xs-row], *[gt-xs-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -4796,12 +4794,9 @@
   *[hide~="sm"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="sm"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="sm"] {
+    position: initial;
+    visibility: visible; }
   *[sm-row], *[sm-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -6377,12 +6372,9 @@
   *[hide~="gt-sm"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="gt-sm"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="gt-sm"] {
+    position: initial;
+    visibility: visible; }
   *[gt-sm-row], *[gt-sm-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -7958,12 +7950,9 @@
   *[hide~="md"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="md"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="md"] {
+    position: initial;
+    visibility: visible; }
   *[md-row], *[md-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -9539,12 +9528,9 @@
   *[hide~="gt-md"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="gt-md"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="gt-md"] {
+    position: initial;
+    visibility: visible; }
   *[gt-md-row], *[gt-md-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -11120,12 +11106,9 @@
   *[hide~="lg"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="lg"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="lg"] {
+    position: initial;
+    visibility: visible; }
   *[lg-row], *[lg-col] {
     display: -webkit-box;
     display: -webkit-flex;
@@ -12701,12 +12684,9 @@
   *[hide~="xl"] {
     position: absolute;
     visibility: hidden; }
-  *[visible]:not([visible=""]) {
-    position: absolute;
-    visibility: hidden; }
-    *[visible]:not([visible=""])[visible~="xl"] {
-      position: initial;
-      visibility: visible; }
+  [visible~="xl"] {
+    position: initial;
+    visibility: visible; }
   *[xl-row], *[xl-col] {
     display: -webkit-box;
     display: -webkit-flex;

@@ -1,3 +1,7 @@
+*[visible] {
+  position: absolute;
+  visibility: hidden; }
+
 *[hide=""] {
   position: absolute;
   visibility: hidden; }

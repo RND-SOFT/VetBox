@@ -5,13 +5,13 @@
   @if $size!=""
     *[hide~="#{$size}"]
       @include hide-set
-    *[visible]:not([visible=""])
-      @include hide-set
-      &[visible~="#{$size}"]
-        @include unhide-set
+    &[visible~="#{$size}"]
+      @include unhide-set
     // set prefix for concat with attr
     $size: $size + '-'
   @else
+    *[visible]
+      @include hide-set
     *[hide=""]
       @include hide-set
 
