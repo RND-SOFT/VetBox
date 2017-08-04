@@ -2,12 +2,20 @@
 
 @mixin core($size)
 
+  $FLEX_LOOP_STEP: 1
+  $COLS_FLEX_COUNT: 8
+  $ROWS_FLEX_COUNT: 5
+  $ORDER_RANGE: 20
+  $FLEX_SHRINK_COUNT: 10
+  $FLEX_GROW_COUNT: 10
+  $MARGIN_END_POINT: 50
+  $MARGIN_LOOP_STEP: 5
+
   @if $size!=""
     *[hide~="#{$size}"]
       @include hide-set
     &[visible~="#{$size}"]
       @include unhide-set
-    // set prefix for concat with attr
     $size: $size + '-'
   @else
     *[visible]
@@ -30,11 +38,11 @@
     @include justify-content-set(row)
     @include align-items-set(row)
 
-    @for $i from 1 through 100
-      *[#{$size}flex="#{$i}"]
-        @include calc-row-flex($i)
+    @for $i from 1 through (100 / $FLEX_LOOP_STEP)
+      *[#{$size}flex="#{$i * $FLEX_LOOP_STEP}"]
+        @include calc-row-flex($i * $FLEX_LOOP_STEP)
 
-    @for $i from 1 through 8
+    @for $i from 1 through $COLS_FLEX_COUNT
       &[#{$size}cols-flex="#{$i}"] > *
         max-width: calc(100% / #{$i}
         flex: 1 1 calc(100% / #{$i})
@@ -47,11 +55,11 @@
     *[#{$size}flex]
       flex-basis: 1px
       min-height: 0
-    @for $i from 1 through 100
-      *[#{$size}flex="#{$i}"]
-        @include calc-col-flex($i)
+    @for $i from 1 through (100 / $FLEX_LOOP_STEP)
+      *[#{$size}flex="#{$i * $FLEX_LOOP_STEP}"]
+        @include calc-col-flex($i * $FLEX_LOOP_STEP)
 
-    @for $i from 1 through 5
+    @for $i from 1 through $ROWS_FLEX_COUNT
       &[#{$size}rows-flex="#{$i}"] > *
         max-height: calc(100% / #{$i}
         flex: 1 1 calc(100% / #{$i})
@@ -62,37 +70,32 @@
   *[#{$size}align-self]
     @include align-self-set
 
-  @for $i from -10 through 10
+  @for $i from ($ORDER_RANGE/2) * -1 through $ORDER_RANGE/2
     &[#{$size}order="#{$i}"]
       order: #{$i}
 
-  @for $i from 0 through 10
+  @for $i from 0 through $FLEX_SHRINK_COUNT
     &[#{$size}flex-shrink="#{$i}"]
       flex-shrink: #{$i}
 
-  @for $i from 0 through 10
+  @for $i from 0 through $FLEX_GROW_COUNT
     &[#{$size}flex-grow="#{$i}"]
       flex-grow: #{$i}
 
-  // Margins:
+  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+    &[#{$size}margin-top="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mt="#{$i * $MARGIN_LOOP_STEP}"]
+      margin-top: #{$i * $MARGIN_LOOP_STEP}px
 
-  $m-last-size: 50
-  $m-step: 5
+  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+    &[#{$size}margin-right="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mr="#{$i * $MARGIN_LOOP_STEP}"]
+      margin-right: #{$i * $MARGIN_LOOP_STEP}px
 
-  @for $i from 1 through ($m-last-size / $m-step)
-    &[#{$size}margin-top="#{$i * $m-step}"], &[#{$size}mt="#{$i * $m-step}"]
-      margin-top: #{$i * $m-step}px
+  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+    &[#{$size}margin-bottom="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mb="#{$i * $MARGIN_LOOP_STEP}"]
+      margin-bottom: #{$i * $MARGIN_LOOP_STEP}px
 
-  @for $i from 1 through ($m-last-size / $m-step)
-    &[#{$size}margin-right="#{$i * $m-step}"], &[#{$size}mr="#{$i * $m-step}"]
-      margin-right: #{$i * $m-step}px
-
-  @for $i from 1 through ($m-last-size / $m-step)
-    &[#{$size}margin-bottom="#{$i * $m-step}"], &[#{$size}mb="#{$i * $m-step}"]
-      margin-bottom: #{$i * $m-step}px
-
-  @for $i from 1 through ($m-last-size / $m-step)
-    &[#{$size}margin-left="#{$i * $m-step}"], &[#{$size}ml="#{$i * $m-step}"]
-      margin-left: #{$i * $m-step}px
+  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+    &[#{$size}margin-left="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}ml="#{$i * $MARGIN_LOOP_STEP}"]
+      margin-left: #{$i * $MARGIN_LOOP_STEP}px
 
 @include core("")
