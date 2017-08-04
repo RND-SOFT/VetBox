@@ -74,4 +74,25 @@
     &[#{$size}flex-grow="#{$i}"]
       flex-grow: #{$i}
 
+  // Margins:
+
+  $m-last-size: 50
+  $m-step: 5
+
+  @for $i from 1 through ($m-last-size / $m-step)
+    &[#{$size}margin-top="#{$i * $m-step}"], &[#{$size}mt="#{$i * $m-step}"]
+      margin-top: #{$i * $m-step}px
+
+  @for $i from 1 through ($m-last-size / $m-step)
+    &[#{$size}margin-right="#{$i * $m-step}"], &[#{$size}mr="#{$i * $m-step}"]
+      margin-right: #{$i * $m-step}px
+
+  @for $i from 1 through ($m-last-size / $m-step)
+    &[#{$size}margin-bottom="#{$i * $m-step}"], &[#{$size}mb="#{$i * $m-step}"]
+      margin-bottom: #{$i * $m-step}px
+
+  @for $i from 1 through ($m-last-size / $m-step)
+    &[#{$size}margin-left="#{$i * $m-step}"], &[#{$size}ml="#{$i * $m-step}"]
+      margin-left: #{$i * $m-step}px
+
 @include core("")

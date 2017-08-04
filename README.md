@@ -19,6 +19,9 @@
 <div order="-1">
 <div flex-shrink="2">
 <div flex-grow="5">
+
+<div mr="5">
+<div margin-bottom="25">
 ```
 
 ## Abbreviations:
@@ -32,6 +35,11 @@ bl           | baseline
 str          | stretch
 sb           | space-between
 sa           | space-around
+------------ | -------------
+mt           | margin-top
+mr           | margin-right
+mb           | margin-bottom
+ml           | margin-left
 
 ## Breakpoint aliases:
 

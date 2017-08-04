@@ -1,10 +1,17 @@
 {
   "name": "VetBox",
-  "version": "1.0.0",
-  "description": "css flexbox framework",
+  "version": "1.0.1",
+  "description": "Layout css library",
   "author": "VetLee",
   "license": "ISC",
-  "repository": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VetLee/VetBox.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VetLee/VetBox/issues"
+  },
+  "homepage": "https://github.com/VetLee/VetBox",
   "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.14.*",
