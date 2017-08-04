@@ -1753,3 +1753,8 @@
 
 [margin-left="50"], [ml="50"] {
   margin-left: 50px; }
+
+*[nowrap-ell], *[vb-ne] {
+  overflow-x: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }

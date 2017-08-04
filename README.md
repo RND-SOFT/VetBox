@@ -22,6 +22,9 @@
 
 <div mr="5">
 <div margin-bottom="25">
+
+<div vb-ne>
+<div nowrap-ell>
 ```
 
 ## Abbreviations:
@@ -40,6 +43,8 @@ mt           | margin-top
 mr           | margin-right
 mb           | margin-bottom
 ml           | margin-left
+------------ | -------------
+vb-ne        | nowrap-ell
 
 ## Breakpoint aliases:
 
