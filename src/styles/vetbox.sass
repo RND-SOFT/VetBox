@@ -110,4 +110,18 @@
     white-space: nowrap
     text-overflow: ellipsis
 
+  @if $USE_TABLE_HELPER
+    *[at~="w0"]
+      width: 1%
+    *[at~="nowrap"]
+      white-space: nowrap
+    *[at~="left"]
+      text-align: left!important
+    *[at~="center"]
+      text-align: center!important
+    *[at~="right"]
+      text-align: right!important
+    *[at~="vcenter"]
+      vertical-align: middle!important
+
 @include core("")

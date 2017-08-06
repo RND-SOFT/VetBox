@@ -2558,3 +2558,21 @@
   overflow-x: hidden;
   white-space: nowrap;
   text-overflow: ellipsis; }
+
+*[at~="w0"] {
+  width: 1%; }
+
+*[at~="nowrap"] {
+  white-space: nowrap; }
+
+*[at~="left"] {
+  text-align: left !important; }
+
+*[at~="center"] {
+  text-align: center !important; }
+
+*[at~="right"] {
+  text-align: right !important; }
+
+*[at~="vcenter"] {
+  vertical-align: middle !important; }
