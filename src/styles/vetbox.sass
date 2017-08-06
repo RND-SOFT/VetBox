@@ -1,17 +1,7 @@
-@import "mixins"
+@import "helpers"
+@import "config"
 
 @mixin core($size)
-
-  $FLEX_LOOP_STEP: 1
-  $COLS_FLEX_COUNT: 8
-  $ROWS_FLEX_COUNT: 5
-  $ORDER_RANGE: 20
-  $FLEX_SHRINK_COUNT: 10
-  $FLEX_GROW_COUNT: 10
-  $MARGIN_END_POINT: 50
-  $MARGIN_LOOP_STEP: 5
-  $WRAP_MARGIN_END_POINT: 50
-  $WRAP_MARGIN_LOOP_STEP: 5
 
   @if $size!=""
     *[hide~="#{$size}"]
@@ -44,19 +34,21 @@
       *[#{$size}flex="#{$i * $FLEX_LOOP_STEP}"]
         @include calc-row-flex($i * $FLEX_LOOP_STEP)
 
-    @for $cf from 1 through $COLS_FLEX_COUNT
-      &[#{$size}cols-flex="#{$cf}"]
-        & > *
-          max-width: calc(100% / #{$cf})
-          flex: 1 1 calc(100% / #{$cf})
-        @for $wm from 1 through ($WRAP_MARGIN_END_POINT / $WRAP_MARGIN_LOOP_STEP)
-          &[margins="#{$wm * $WRAP_MARGIN_LOOP_STEP}"]
-            & > *
-              max-width: calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
-              flex: 1 1 calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
-              margin-bottom: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
-              &:not(:nth-child(3n+3))
-                margin-right: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
+    @if $USE_COLS_FLEX
+      @for $cf from 1 through $COLS_FLEX_COUNT
+        &[#{$size}cols-flex="#{$cf}"]
+          & > *
+            max-width: calc(100% / #{$cf})
+            flex: 1 1 calc(100% / #{$cf})
+          @if $USE_WRAP_MARGIN_HELPER
+            @for $wm from 1 through ($WRAP_MARGIN_END_POINT / $WRAP_MARGIN_LOOP_STEP)
+              &[margins="#{$wm * $WRAP_MARGIN_LOOP_STEP}"]
+                & > *
+                  max-width: calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
+                  flex: 1 1 calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
+                  margin-bottom: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
+                  &:not(:nth-child(3n+3))
+                    margin-right: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
 
   *[#{$size}col], [col]
     flex-direction: column
@@ -69,10 +61,11 @@
       *[#{$size}flex="#{$i * $FLEX_LOOP_STEP}"]
         @include calc-col-flex($i * $FLEX_LOOP_STEP)
 
-    @for $i from 1 through $ROWS_FLEX_COUNT
-      &[#{$size}rows-flex="#{$i}"] > *
-        max-height: calc(100% / #{$i})
-        flex: 1 1 calc(100% / #{$i})
+    @if $USE_ROWS_FLEX
+      @for $i from 1 through $ROWS_FLEX_COUNT
+        &[#{$size}rows-flex="#{$i}"] > *
+          max-height: calc(100% / #{$i})
+          flex: 1 1 calc(100% / #{$i})
 
   *[#{$size}align-content]
     @include align-content-set
@@ -80,33 +73,37 @@
   *[#{$size}align-self]
     @include align-self-set
 
-  @for $i from ($ORDER_RANGE/2) * -1 through $ORDER_RANGE/2
-    &[#{$size}order="#{$i}"]
-      order: #{$i}
+  @if $USE_FLEX_ORDER
+    @for $i from ($ORDER_RANGE/2) * -1 through $ORDER_RANGE/2
+      &[#{$size}order="#{$i}"]
+        order: #{$i}
 
-  @for $i from 0 through $FLEX_SHRINK_COUNT
-    &[#{$size}flex-shrink="#{$i}"]
-      flex-shrink: #{$i}
+  @if $USE_FLEX_SHRINK
+    @for $i from 0 through $FLEX_SHRINK_COUNT
+      &[#{$size}flex-shrink="#{$i}"]
+        flex-shrink: #{$i}
 
-  @for $i from 0 through $FLEX_GROW_COUNT
-    &[#{$size}flex-grow="#{$i}"]
-      flex-grow: #{$i}
+  @if $USE_FLEX_GROW
+    @for $i from 0 through $FLEX_GROW_COUNT
+      &[#{$size}flex-grow="#{$i}"]
+        flex-grow: #{$i}
 
-  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
-    &[#{$size}margin-top="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mt="#{$i * $MARGIN_LOOP_STEP}"]
-      margin-top: #{$i * $MARGIN_LOOP_STEP}px
+  @if $USE_MARGINS_HELPER
+    @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+      &[#{$size}margin-top="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mt="#{$i * $MARGIN_LOOP_STEP}"]
+        margin-top: #{$i * $MARGIN_LOOP_STEP}px
 
-  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
-    &[#{$size}margin-right="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mr="#{$i * $MARGIN_LOOP_STEP}"]
-      margin-right: #{$i * $MARGIN_LOOP_STEP}px
+    @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+      &[#{$size}margin-right="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mr="#{$i * $MARGIN_LOOP_STEP}"]
+        margin-right: #{$i * $MARGIN_LOOP_STEP}px
 
-  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
-    &[#{$size}margin-bottom="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mb="#{$i * $MARGIN_LOOP_STEP}"]
-      margin-bottom: #{$i * $MARGIN_LOOP_STEP}px
+    @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+      &[#{$size}margin-bottom="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mb="#{$i * $MARGIN_LOOP_STEP}"]
+        margin-bottom: #{$i * $MARGIN_LOOP_STEP}px
 
-  @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
-    &[#{$size}margin-left="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}ml="#{$i * $MARGIN_LOOP_STEP}"]
-      margin-left: #{$i * $MARGIN_LOOP_STEP}px
+    @for $i from 1 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
+      &[#{$size}margin-left="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}ml="#{$i * $MARGIN_LOOP_STEP}"]
+        margin-left: #{$i * $MARGIN_LOOP_STEP}px
 
   *[nowrap-ell], *[vb-ne]
     overflow-x: hidden
