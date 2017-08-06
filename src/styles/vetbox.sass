@@ -10,6 +10,8 @@
   $FLEX_GROW_COUNT: 10
   $MARGIN_END_POINT: 50
   $MARGIN_LOOP_STEP: 5
+  $WRAP_MARGIN_END_POINT: 50
+  $WRAP_MARGIN_LOOP_STEP: 5
 
   @if $size!=""
     *[hide~="#{$size}"]
@@ -42,11 +44,19 @@
       *[#{$size}flex="#{$i * $FLEX_LOOP_STEP}"]
         @include calc-row-flex($i * $FLEX_LOOP_STEP)
 
-    @for $i from 1 through $COLS_FLEX_COUNT
-      &[#{$size}cols-flex="#{$i}"] > *
-        max-width: calc(100% / #{$i}
-        flex: 1 1 calc(100% / #{$i})
-
+    @for $cf from 1 through $COLS_FLEX_COUNT
+      &[#{$size}cols-flex="#{$cf}"]
+        & > *
+          max-width: calc(100% / #{$cf})
+          flex: 1 1 calc(100% / #{$cf})
+        @for $wm from 1 through ($WRAP_MARGIN_END_POINT / $WRAP_MARGIN_LOOP_STEP)
+          &[margins="#{$wm * $WRAP_MARGIN_LOOP_STEP}"]
+            & > *
+              max-width: calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
+              flex: 1 1 calc(100% / #{$cf} - #{($wm * $WRAP_MARGIN_LOOP_STEP) / $cf * ($cf - 1)+px})
+              margin-bottom: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
+              &:not(:nth-child(3n+3))
+                margin-right: #{$wm * $WRAP_MARGIN_LOOP_STEP}px
 
   *[#{$size}col], [col]
     flex-direction: column
@@ -61,7 +71,7 @@
 
     @for $i from 1 through $ROWS_FLEX_COUNT
       &[#{$size}rows-flex="#{$i}"] > *
-        max-height: calc(100% / #{$i}
+        max-height: calc(100% / #{$i})
         flex: 1 1 calc(100% / #{$i})
 
   *[#{$size}align-content]
