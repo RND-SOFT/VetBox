@@ -2434,6 +2434,9 @@
       -ms-flex-positive: 10;
           flex-grow: 10; }
 
+[margin-top="0"], [mt="0"] {
+  margin-top: 0px; }
+
 [margin-top="5"], [mt="5"] {
   margin-top: 5px; }
 
@@ -2463,6 +2466,9 @@
 
 [margin-top="50"], [mt="50"] {
   margin-top: 50px; }
+
+[margin-right="0"], [mr="0"] {
+  margin-right: 0px; }
 
 [margin-right="5"], [mr="5"] {
   margin-right: 5px; }
@@ -2494,6 +2500,9 @@
 [margin-right="50"], [mr="50"] {
   margin-right: 50px; }
 
+[margin-bottom="0"], [mb="0"] {
+  margin-bottom: 0px; }
+
 [margin-bottom="5"], [mb="5"] {
   margin-bottom: 5px; }
 
@@ -2523,6 +2532,9 @@
 
 [margin-bottom="50"], [mb="50"] {
   margin-bottom: 50px; }
+
+[margin-left="0"], [ml="0"] {
+  margin-left: 0px; }
 
 [margin-left="5"], [ml="5"] {
   margin-left: 5px; }
@@ -2559,6 +2571,9 @@
   white-space: nowrap;
   text-overflow: ellipsis; }
 
+*[at~="wb"] {
+  word-break: break-word; }
+
 *[at~="w0"] {
   width: 1%; }
 
@@ -2574,5 +2589,11 @@
 *[at~="right"] {
   text-align: right !important; }
 
+*[at~="vtop"] {
+  vertical-align: top !important; }
+
 *[at~="vcenter"] {
   vertical-align: middle !important; }
+
+*[at~="vbot"] {
+  vertical-align: bottom !important; }
