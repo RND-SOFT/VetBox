@@ -91,19 +91,19 @@
   @if $USE_MARGINS_HELPER
     @for $i from 0 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
       &[#{$size}margin-top="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mt="#{$i * $MARGIN_LOOP_STEP}"]
-        margin-top: #{$i * $MARGIN_LOOP_STEP}px
+        margin-top: #{$i * $MARGIN_LOOP_STEP}px !important
 
     @for $i from 0 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
       &[#{$size}margin-right="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mr="#{$i * $MARGIN_LOOP_STEP}"]
-        margin-right: #{$i * $MARGIN_LOOP_STEP}px
+        margin-right: #{$i * $MARGIN_LOOP_STEP}px !important
 
     @for $i from 0 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
       &[#{$size}margin-bottom="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}mb="#{$i * $MARGIN_LOOP_STEP}"]
-        margin-bottom: #{$i * $MARGIN_LOOP_STEP}px
+        margin-bottom: #{$i * $MARGIN_LOOP_STEP}px !important
 
     @for $i from 0 through ($MARGIN_END_POINT / $MARGIN_LOOP_STEP)
       &[#{$size}margin-left="#{$i * $MARGIN_LOOP_STEP}"], &[#{$size}ml="#{$i * $MARGIN_LOOP_STEP}"]
-        margin-left: #{$i * $MARGIN_LOOP_STEP}px
+        margin-left: #{$i * $MARGIN_LOOP_STEP}px !important
 
   *[#{$size}nowrap-ell], *[#{$size}vb-ne]
     overflow-x: hidden
@@ -118,16 +118,16 @@
     *[#{$size}at~="nowrap"]
       white-space: nowrap
     *[#{$size}at~="left"]
-      text-align: left!important
+      text-align: left !important
     *[#{$size}at~="center"]
-      text-align: center!important
+      text-align: center !important
     *[#{$size}at~="right"]
-      text-align: right!important
+      text-align: right !important
     *[#{$size}at~="vtop"]
-      vertical-align: top!important
+      vertical-align: top !important
     *[#{$size}at~="vcenter"]
-      vertical-align: middle!important
+      vertical-align: middle !important
     *[#{$size}at~="vbot"]
-      vertical-align: bottom!important
+      vertical-align: bottom !important
 
 @include core("")
